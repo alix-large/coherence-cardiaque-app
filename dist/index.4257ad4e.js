@@ -557,9 +557,9 @@ function hmrAccept(bundle, id) {
 }
 
 },{}],"9OMkf":[function(require,module,exports) {
-/*Gestion de l'animation en fonction des choix utilisateur.
-    //Sélection des éléments HTML
-*/ const formElt = document.querySelector(".form");
+// Gestion de l'animation en fonction des choix utilisateur.
+// Sélection des éléments HTML
+const formElt = document.querySelector(".form");
 const breathRatio = document.getElementById("breathR");
 const imgElt = document.getElementById("rythme");
 const player = document.getElementById("audio");

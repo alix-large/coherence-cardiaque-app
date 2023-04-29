@@ -52,7 +52,15 @@ main {
         margin :auto;
     }
 }
+
+.emphasis {
+    border: solid 4px var.$color-first;
+    border-radius: 5px;
+    padding: 0 0.5rem;
+
+}
 // largeur max de l'input duration
 #duration {
     max-width: 4rem;
 }
+
