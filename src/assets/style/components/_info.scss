@@ -1,0 +1,32 @@
+@use '../mixin';
+@use '../var.scss';
+
+
+.info {
+        color: var.$color-text-green;
+        margin: 3rem;
+        font-size: 1rem;
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: var.$radius;
+
+        @include mixin.medium{
+            width: 70%;
+            margin: 3rem 2rem;
+            min-width: 35rem;
+            margin: 3rem auto;
+            font-size: 1.3rem;
+        }
+    
+    &__subtitle{
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: left;
+        margin: 1rem 0;
+    }
+
+    &__desc:not(:last-of-type) {
+        margin-bottom: 1rem;
+
+    };
+}

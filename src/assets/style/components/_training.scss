@@ -81,7 +81,7 @@
         color: var.$color-first;
         padding : 2rem 0;
         width: 70%;
-        margin: auto;
+        margin: 3rem auto;
 
         @include mixin.medium {
             font-size : 1.6rem;
@@ -91,6 +91,7 @@
     &__timer {
         color: var.$color-first;
         font-size: 1.6rem;
+        margin-bottom : 3rem;
     }
 
     // &__animation {
