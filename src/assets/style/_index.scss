@@ -1,0 +1,18 @@
+
+@use 'reset-css/sass/reset';
+
+@use './global';
+@use './var';
+@use './mixin';
+
+@use '../style/components/btn';
+@use '../style/components/closeBtn';
+@use '../style/components/form';
+@use '../style/components/footer';
+@use '../style/components/header';
+@use '../style/components/_ico';
+@use '../style/components/intro';
+@use '../style/components/logo';
+@use '../style/components/page';
+@use '../style/components/segment';
+@use '../style/components/training';

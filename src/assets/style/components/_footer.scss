@@ -1,0 +1,25 @@
+@use '../mixin';
+@use '../var.scss';
+.footer {
+
+    &__info{
+        text-align: center;
+        background-color: var.$color-first;
+        margin-top: auto;
+        padding: 2rem 1rem;
+        border-top: 12px solid #fff;
+    }
+
+    &__emphasis{
+        display: inline;
+        display: inline;
+        max-width :30%;
+        margin: auto;
+        font-family:'Ubuntu', Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        color: var.$color-text;
+        background-color: var.$color-text-green;
+        padding: 0.5rem 1rem;
+        border-radius: var.$radius;
+    }
+}

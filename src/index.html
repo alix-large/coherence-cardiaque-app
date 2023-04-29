@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/style/_index.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;600;700&family=Raleway:ital,wght@0,400;0,700;1,100&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="./assets/js/index.js" type="module" defer></script>
+  <script src="./assets/js/app.js" type="module" defer></script>
+  <title>Mon assistant de cohérence cardiaque</title>
+</head>
+
+<body>
+  <div class="container">
+    <header role="banner" class="header">
+      <a href="index.html" class="logo__link">
+        <img class="logo" src="./assets/coherence-cardiaque-spirale-600x600.jpg" alt="">
+      </a>
+      <p class="header__title"><span>Mon apply de</span> <span class="header__emphasis">cohérence cardiaque</span></p>
+    </header>
+
+    <main role="main" class="page">
+      <div class="box__flex">
+        <section id="retour" class="intro">
+          <h1 class="intro__title"><span class="header__emphasis">La cohérence cardiaque</span></h1>
+          <h2 class="intro__subtitle">Qu'est-ce que c'est ?</h2>
+          <p class="intro__desc">La cohérence cardiaque est une technique de respiration qui vise à améliorer la santé physique et mentale en régulant le rythme cardiaque. Elle consiste à pratiquer une respiration lente, profonde et régulière pendant quelques minutes chaque jour, en se concentrant sur la respiration et en contrôlant le rythme cardiaque.
+          </p>
+          <p class="intro__desc">Lorsque nous respirons de manière régulière et profonde, cela peut aider à stimuler le système nerveux parasympathique, qui est responsable de la relaxation et de la récupération. Cela peut aider à réduire le stress, l'anxiété, la tension artérielle, la fréquence cardiaque et à améliorer la qualité du sommeil. La pratique de la cohérence cardiaque peut également avoir des effets bénéfiques sur la concentration, la mémoire, l'humeur et les performances physiques.
+          </p>
+          <p class="intro__desc">Pour pratiquer la cohérence cardiaque, il existe différentes méthodes, mais la plus courante consiste à inspirer lentement pendant 5 secondes, puis à expirer lentement pendant 5 secondes. Il est recommandé de pratiquer la cohérence cardiaque pendant au moins 5 minutes par jour, de préférence à un moment où vous êtes calme et détendu
+          </p>
+        </section>
+
+        <section class="segment">
+          <h2 class="segment__title">Paramétrer l'exercice</h2>
+          <form id="config" class="form" action="">
+            <div class="form__parameter">
+              <label for="duration">Durée</label>
+              <input id="duration" aria-hidden="true" name="duration-number" type="number" value = "1" min="1" max="5"> 
+              min
+            </div>
+
+            <div class="form__parameter">
+              <select name="breath-ratio" id="breathR">Choisir un temps de respiration (inspiration/expiration)
+                <option value="1">5/5</option>
+                <option value="2">3/7</option>
+                <option value="3">6/4</option>
+                <option value="4">4/6</option>
+              </select>
+              secondes
+            </div>
+
+            <div class="form__parameter">
+              <label>Bruitage
+                <input id="checkbox" name="sound" type="checkbox" check>
+                Activer le son
+              </label>
+            </div>
+            <button type="submit" class="btn">Commencer</button>
+          </form>
+        </section>
+      </div>
+      <section id="trainingSection" class="training hidden">
+        <button type="button" class="closeBtn">
+          <a href="#retour">
+            <i role="img" focusable="false" data-feather="x-circle" aria-hidden="true" class="ico"></i>
+          </a>
+        
+        </button>
+        <h2 class="training__title"><span class="header__emphasis">Inspirez</span> puis <span class="header__emphasis">expirez</span> en suivant <span class="header__emphasis">le rythme</span></h2>
+        <div id ="timer" class ="training__timer"></div>
+        <div class="training__animation">
+          <img class="training__img"  id="rythme" src="./assets/coherence-cardiaque-spirale.jpg" alt="">
+        </div>
+        <div>
+            <audio id="audio">
+              <source src="./assets/AMBForst_Foret 4 (ID 2749)_LS.mp3"></source>
+            </audio>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo" class="footer">
+      <p class="footer__info"><span class="footer__emphasis">By Alix</span></p>
+    </footer>
+  </div>
+
+</body>
+</html>

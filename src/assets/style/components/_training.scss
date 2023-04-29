@@ -1,0 +1,104 @@
+@use '../mixin';
+@use '../var.scss';
+
+@keyframes spiral37 {
+    0% {
+        transform: scale(0.2);
+    }
+    
+    70% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.2);
+    }
+}
+@keyframes spiral55 {
+    0% {
+        transform: scale(0.2);
+    }
+    
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.2);
+    }
+}
+
+@keyframes spiral46 {
+    0% {
+        transform: scale(0.2);
+    }
+    
+    40% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.2);
+    }
+}
+
+@keyframes spiral64 {
+    0% {
+        transform: scale(0.2);
+    }
+    
+    60% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.2);
+    }
+}
+
+.rythme37 {
+    animation: 10s linear infinite normal spiral37;
+}
+.rythme55 {
+    animation: 10s linear infinite normal spiral55;
+}
+.rythme64 {
+    animation: 10s linear infinite normal spiral64;
+}
+.rythme46 {
+    animation: 10s linear infinite normal spiral46;
+}
+
+.training {
+    background-color: black;
+    position : fixed;
+    top :0;
+    left : 0;
+    width: 100%;
+    height : 100%;
+    z-index: 10;
+    text-align: center;
+    
+
+    &__title {
+        font-size: 1.1rem;
+        color: var.$color-first;
+        padding : 2rem 0;
+        width: 70%;
+        margin: auto;
+
+        @include mixin.medium {
+            font-size : 1.6rem;
+        }
+    }
+
+    &__timer {
+        color: var.$color-first;
+        font-size: 1.6rem;
+    }
+
+    // &__animation {
+    //     text-align: center;
+    // }
+
+    &__img {
+        width: 50%;
+        border-radius: 50%;
+    }
+}

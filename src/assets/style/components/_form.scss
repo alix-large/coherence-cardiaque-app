@@ -1,0 +1,16 @@
+@use '../mixin';
+@use '../var.scss';
+
+.form {
+    background-color: rgb(189, 154, 14);
+    padding: 1rem;
+  
+        @include mixin.medium{
+        border-radius: 0 0 15px 15px; 
+    }
+
+    &__parameter {
+        font-size: 1.2rem;
+        padding:0.5rem 1rem;
+    }
+}

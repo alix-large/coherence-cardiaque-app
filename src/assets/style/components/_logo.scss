@@ -1,0 +1,15 @@
+@use '../mixin';
+
+.logo {
+    width: 20%;
+    border-radius: 50%;
+
+
+    @include mixin.medium{
+        width: 25%;
+    }
+
+    &__link{
+        text-align: left;
+    }
+}

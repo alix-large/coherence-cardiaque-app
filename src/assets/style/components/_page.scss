@@ -1,0 +1,8 @@
+@use '../mixin';
+@use '../var.scss';
+
+.page {
+    min-height: 100vh;
+    max-width: 75em;
+    margin: auto;
+}

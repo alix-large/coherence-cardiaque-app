@@ -1,0 +1,51 @@
+@use '../mixin';
+@use '../var.scss';
+
+.header {
+    background-color: var.$color-first;
+    text-align: center;
+    padding: 1.5rem;
+    border-bottom: solid 7px var.$color-text;
+
+    @include mixin.medium{
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 2rem;
+        color: var.$color-second;
+        
+        @include mixin.medium{
+            text-align: right;
+        }
+    }
+
+    &__emphasis {
+        min-width :30%;
+        margin: auto;
+        font-family:'Ubuntu', Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        font-size : 1.3rem;
+        color: var.$color-text;
+        background-color: var.$color-text-green;
+        padding: 0.5rem 1rem;
+        border-radius: var.$radius;
+        display: inline-block;
+        text-align: center;
+
+        @include mixin.medium {
+            font-size : 1.6rem;
+        }
+        
+        @include mixin.big {
+            display: inline;
+            font-size : 2rem;
+        }
+            
+    }
+}
+

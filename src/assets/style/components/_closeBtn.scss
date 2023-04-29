@@ -1,0 +1,11 @@
+@use '../mixin';
+@use '../var.scss';
+
+.closeBtn {
+        background-color: black;
+        border: #000000 solid 2px;
+        position: absolute;
+        top: 16;
+        right: 16;
+}
+
