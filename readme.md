@@ -1,10 +1,10 @@
 # Mon apply de cohérence cardiaque
 
-![tag](./src/img/build-from-scratch.svg) 
+![tag](./src/assets/img/build-from-scratch.svg) 
 
-![tag](./src/img/with-html.svg) 
-![tag](./src/img/-css%20(1).svg) 
-![tag](./src/img/-js.svg)
+![tag](./src/assets/img/with-html.svg)
+![tag](./src/assets/img/-css%20(1).svg) 
+![tag](./src/assets/img/-js.svg)
 
 
 
