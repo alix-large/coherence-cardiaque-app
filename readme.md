@@ -1,23 +1,30 @@
-### Mon apply de cohérence cardiaque
+# Mon apply de cohérence cardiaque
+
+![tag](./src/img/build-from-scratch.svg) 
+
+![tag](./src/img/with-html.svg) 
+![tag](./src/img/-css%20(1).svg) 
+![tag](./src/img/-js.svg)
+
+
 
 ## Description
-Mon apply de cohérence cardiaque est un projet de formation. Il s'agit d'une app de respiration guidée paramétrable.
+Mon apply de cohérence cardiaque est un projet de formation réalisé en avril 2023. Il s'agit d'une app de respiration guidée paramétrable fonctionnelle mais encore en cours d'amélioration (notamment sur écran tactile). 
+Il faudrait aussi pouvoir intégrer une alternative audio à l'animation pour les personnes mal voyantes.
 
 ## Demo
-Une demo est visible ici : https://coherence-cardiaque-app.vercel.app/
+Une demo est visible ici : [Mon apply de cohérence cardiaque](https://coherence-cardiaque-app.vercel.app/)
 
 ## Prérequis
-Prérequis
 Avant de pouvoir exécuter ce projet, vous devez installer :
 
-Node.js (version recommandée : 12.x)
-npm (version recommandée : 6.x)
-En outre, ce projet utilise les modules suivants qui seront installés lors de l'installation de ses dépendances :
+- Node.js (version recommandée : 12.x)
+- npm (version recommandée : 6.x)
 
-parcel//transformer-sass (version recommandée : 2.8.3)
-feather icons (version recommandée : 4.29.0)
-Reset CSS (version recommandée : 5.0.1)
-Reset (version recommandée : 0.1.0)
-Pour installer les dépendances du projet, exécutez la commande suivante dans votre terminal :
-npm install
-Une fois l'installation terminée, vous serez prêt à exécuter le projet.
+Ce projet utilise les modules suivants qui seront installés lors de l'installation de ses dépendances :
+
+- parcel//transformer-sass (version recommandée : 2.8.3)
+- feather icons (version recommandée : 4.29.0)
+- reset CSS (version recommandée : 5.0.1)
+- reset (version recommandée : 0.1.0)
+
