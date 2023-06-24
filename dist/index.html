@@ -60,13 +60,17 @@
             </div>
 
             <div class="form__parameter">
-              <label>
-                <span class="form__legend">Options du son</span>
-                <input id="checkbox" name="sound" type="checkbox" checked="">
-                Activer la bande son <br>
-                <input id="checkbox-bip" name="sound-bip" type="checkbox" checked="">
-                Activer le signal après chaque respiration/inspiration
-              </label>
+                <fieldset>
+                  <legend class="form__legend">Options du son</legend>
+                  <div>
+                    <input type="radio" id="soundtrack" name="audioOption" value="activer la bande son" checked="">
+                    <label for="soundtrack">Activer la bande son</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="beep" name="audioOption" value="activer le signal apres chaqe respiration inspiration">
+                    <label for="beep">Activer le signal après chaque respiration/inspiration</label>
+                  </div>
+                </fieldset>
             </div>
             <button type="submit" class="btn">Commencer</button>
           </form>
@@ -80,13 +84,13 @@
         <div id="timer" class="training__timer"></div>
         <div class="training__animation">
           <img class="training__img" id="rythme" src="/coherence-cardiaque-spirale.71398a60.jpg" alt="">
-          <audio id="audio">
+          <audio id="soundtrackAudio">
               <source src="/foret.b59b778a.mp3">
           </audio>
         </div>
         <div>
-          <audio id="breathingSound">
-            <source src="/coherence-cardiaque-echo.48318679.mp3" type="audio/mpeg">
+          <audio id="beepAudio">
+            <source src="/coherence-cardiaque-echo.48318679.mp3">
             Your browser does not support the audio element.
           </audio>
         </div>

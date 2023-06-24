@@ -4,8 +4,10 @@
 const formElt = document.querySelector('.form');
 const breathRatio = document.getElementById('breathR');
 const imgElt = document.getElementById('rythme');
-const player = document.getElementById('audio');
-const checkboxElt = document.getElementById('checkbox');
+const soundtrackPlayer = document.getElementById('soundtrackAudio');
+const audio = document.getElementById("beepAudio");
+const inputRadioSoundtrackElt = document.getElementById('soundtrack');
+const inputRadioBeepElt =document.getElementById('beep')
 const durationChoice = document.getElementById('duration');
 const sectionElt = document.getElementById('trainingSection');
 const closeBtnElt = document.querySelector('.closeBtn');
@@ -24,6 +26,7 @@ formElt.addEventListener('submit', function (event) {
 });
 
 // Fonctions nommées pour chaque tâche spécifique
+
 // Fonction pour démarrer l'animation
 function startAnimation() {
     // Affichage de la section de l'animation et mise en place du minuteur
@@ -31,6 +34,7 @@ function startAnimation() {
     const duration = durationChoice.value * 60000;
     const startTime = Date.now();
     const timerElement = document.getElementById('timer');
+    let pauseBeep;
 
     // Fonction de mise à jour du minuteur
     function updateTimer() {
@@ -50,44 +54,64 @@ function startAnimation() {
             requestAnimationFrame(updateTimer);
         }
     }
-    // Lecture de l'audio si la case à cocher est cochée, avec une pause automatique à la fin de la durée
+    // Lecture de l'audio (soundtrack ou bip) si la case à cocher est cochée, avec une pause automatique à la fin de la durée
     updateTimer();
 
-    if (checkboxElt.checked) {
-        player.play();
+    if (inputRadioSoundtrackElt.checked) {
+        soundtrackPlayer.play();
         timeoutId = setTimeout(() => {
-            player.pause();
-        }, duration + 2000);
-        handleBreathRatio(); // Appel de handleBreathRatio pour démarrer les signaux sonores en même temps que la lecture audio
+            soundtrackPlayer.pause();
+        }, duration + 1500);
     }
-    // Fonction de retour pour arrêter l'audio et la pause automatique en cas de besoin
-    return () => {
-        return () => {
-            clearTimeout(timeoutId);
-            player.pause();
+    else if (inputRadioBeepElt.checked)  {
+        playBeep();
+
+        pauseBeep = () => {
+            beepAudio.pause(); // Met en pause la lecture du bip
         };
-    }
+    } 
+    
+    // Fonction de retour pour arrêter l'audio et la pause automatique en cas de besoin
+
+    return () => {
+        clearTimeout(timeoutId);
+        soundtrackPlayer.pause();
+    };
+    
 }
 
-// Fonction pour jouer les signaux sonores à intervalles réguliers
-function playBeep(interval) {
+// Fonction pour gérer la lecture du bip pour la respiration
+function playBeep() {
+    const rythme = breathRatio.value;
+    const intervals = getIntervalForRythme(rythme);
     let currentIndex = 0;
-    let audio = new Audio("/assets/sound/foret.mp3"); 
-    console.log(audio);
+
 
     function playNextBeep() {
         audio.play();
-        currentIndex = (currentIndex + 1) % interval.length;
-        setTimeout(playNextBeep, interval[currentIndex]);
+        currentIndex = (currentIndex + 1) % intervals.length;
+        setTimeout(playNextBeep, intervals[currentIndex]);
     }
 
     playNextBeep();
 }
 
+function getIntervalForRythme(rythme) {
+    if (rythme === '1') {
+        return [5000]; // 5 secondes
+    } else if (rythme === '2') {
+        return [3000, 7000]; // 3 secondes, 7 secondes
+    } else if (rythme === '3') {
+        return [4000, 6000]; // 4 secondes, 6 secondes
+    } else if (rythme === '4') {
+        return [6000, 4000]; // 6 secondes, 4 secondes
+    }
+
+    return []; // Retourne un tableau vide si aucun rythme correspondant n'est trouvé
+}
 
 
 // Fonction pour gérer le choix de ratio de respiration et afficher l'image correspondante
-
 
 function handleBreathRatio() {
     const rythme = breathRatio.value;
@@ -95,13 +119,12 @@ function handleBreathRatio() {
     // Ajouter la classe en fonction de la valeur de rythme
     if (rythme === '1') {
         imgElt.classList.add('rythme55');
-        playBeep([5000]);
+
     } else if (rythme === '2') {
         imgElt.classList.add('rythme37');
-        playBeep([3000, 7000]);
+
     } else if (rythme === '3') {
-        imgElt.classList.add('rythme46');
-        playBeep([4000, 6000]);
+
     } else if (rythme === '4') {
         imgElt.classList.add('rythme64');
     }
@@ -110,47 +133,57 @@ function handleBreathRatio() {
 // Fonction pour gérer la lecture
 function handleAudio() {
     const time = durationChoice.value * 60000;
-    // player.addEventListener('ended', function () {
-    //     player.currentTime = 0;
-    //     player.play();
-    // });
+    const audioOption = document.querySelector('input[name="audioOption"]:checked').value;
 
-    if (checkboxElt.checked === true) {
-        player.play();
+    if (audioOption === 'soundtrack') {
+        soundtrackPlayer.play();
         timeoutId = setTimeout(function () {
-            player.pause();
+            soundtrackPlayer.pause();
         }, time + 2000); // Durée avant d'arrêter la lecture 
     }
-    else if (checkboxElt.checked === false) {
-        player.pause();
+    else if (audioOption === 'beep') {
+        soundtrackPlayer.pause();
+        playBeep(time);
         clearTimeout(timeoutId);
     }
 }
 
-
-// Fermer la section au clic sur le bouton ou au clic sur la touche échappe
-closeBtnElt.addEventListener('click', function () {
-    animationStop();
-});
-
-window.addEventListener('keydown', function (event) {
+//Fermer la section au clic sur le bouton ou au clic sur la touche échappe
+function closeSection() {
+    sectionElt.classList.add('hidden');
+    soundtrackPlayer.pause();
+    audio.pause();
+  }
+  
+closeBtnElt.addEventListener('click', closeSection);
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
-        animationStop();
+      closeSection();
     }
 });
 
-function animationStop() {
-    sectionElt.classList.add('hidden');
-    player.pause();
-}
 
 // Activer/désactiver le son lorsqu'on appuie sur la touche "s":
-window.addEventListener('keydown', function (event) {
-    if (event.key === 's') {
-        checkboxElt.checked = !checkboxElt.checked; // Inverser l'état de la case à cocher
-        handleAudio(); // Mettre à jour la lecture audio en fonction de la case à cocher
-    }
-});
+// window.addEventListener('keydown', function (event) {
+//     if (event.key === 's') {
+//         if(inputRadioSoundtrackElt.checked){
+//             inputRadioSoundtrackElt.checked = false;
+//             soundtrackPlayer.pause();
+//         }
+//         else {
+//             inputRadioSoundtrackElt.checked = true;
+//             soundtrackPlayer.play();
+//         }
+//         if (inputRadioBeepElt.checked) {
+//             inputRadioBeepElt.checked = false;
+//             audio.pause();
+//         }
+//         else {
+//             inputRadioBeepElt.checked = true;
+//             playBeep(); 
+//           }
+//     }
+// });
 
 
 
