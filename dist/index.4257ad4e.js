@@ -587,11 +587,9 @@ function startAnimation() {
     function updateTimer() {
         const elapsedTime = Date.now() - startTime;
         const remainingTime = duration - elapsedTime;
-        if (remainingTime <= 0) {
-            // Arrêt de l'animation et rechargement de la page
-            sectionElt.classList.add("hidden");
-            location.reload();
-        } else {
+        if (remainingTime <= 0) // Arrêt de l'animation 
+        sectionElt.classList.add("hidden");
+        else {
             // Mise à jour du minuteur et appel de la fonction de mise à jour en boucle
             const minutes = Math.floor(remainingTime / 60000);
             const seconds = Math.floor(remainingTime % 60000 / 1000);
@@ -608,6 +606,7 @@ function startAnimation() {
         timeoutId = setTimeout(()=>{
             player.pause();
         }, duration + 2000);
+        handleBreathRatio(); // Appel de handleBreathRatio pour démarrer les signaux sonores en même temps que la lecture audio
     }
     // Fonction de retour pour arrêter l'audio et la pause automatique en cas de besoin
     return ()=>{
@@ -617,22 +616,49 @@ function startAnimation() {
         };
     };
 }
+// Fonction pour jouer les signaux sonores à intervalles réguliers
+function playBeep(interval) {
+    let currentIndex = 0;
+    let audio = new Audio("/assets/sound/foret.mp3");
+    console.log(audio);
+    function playNextBeep() {
+        audio.play();
+        currentIndex = (currentIndex + 1) % interval.length;
+        setTimeout(playNextBeep, interval[currentIndex]);
+    }
+    playNextBeep();
+}
 // Fonction pour gérer le choix de ratio de respiration et afficher l'image correspondante
 function handleBreathRatio() {
     const rythme = breathRatio.value;
+    imgElt.className = "";
     // Ajouter la classe en fonction de la valeur de rythme
-    if (rythme === "1") imgElt.classList.add("rythme55");
-    else if (rythme === "2") imgElt.classList.add("rythme37");
-    else if (rythme === "3") imgElt.classList.add("rythme46");
-    else if (rythme === "4") imgElt.classList.add("rythme64");
+    if (rythme === "1") {
+        imgElt.classList.add("rythme55");
+        playBeep([
+            5000
+        ]);
+    } else if (rythme === "2") {
+        imgElt.classList.add("rythme37");
+        playBeep([
+            3000,
+            7000
+        ]);
+    } else if (rythme === "3") {
+        imgElt.classList.add("rythme46");
+        playBeep([
+            4000,
+            6000
+        ]);
+    } else if (rythme === "4") imgElt.classList.add("rythme64");
 }
 // Fonction pour gérer la lecture
 function handleAudio() {
     const time = durationChoice.value * 60000;
-    player.addEventListener("ended", function() {
-        player.currentTime = 0;
-        player.play();
-    });
+    // player.addEventListener('ended', function () {
+    //     player.currentTime = 0;
+    //     player.play();
+    // });
     if (checkboxElt.checked === true) {
         player.play();
         timeoutId = setTimeout(function() {

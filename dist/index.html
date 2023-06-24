@@ -61,9 +61,11 @@
 
             <div class="form__parameter">
               <label>
-                <span class="form__legend">Bruitage</span>
+                <span class="form__legend">Options du son</span>
                 <input id="checkbox" name="sound" type="checkbox" checked="">
-                Activer le son
+                Activer la bande son <br>
+                <input id="checkbox-bip" name="sound-bip" type="checkbox" checked="">
+                Activer le signal après chaque respiration/inspiration
               </label>
             </div>
             <button type="submit" class="btn">Commencer</button>
@@ -79,7 +81,13 @@
         <div class="training__animation">
           <img class="training__img" id="rythme" src="/coherence-cardiaque-spirale.71398a60.jpg" alt="">
           <audio id="audio">
-              <source src="/foret.6339bd29.mp3">
+              <source src="/foret.b59b778a.mp3">
+          </audio>
+        </div>
+        <div>
+          <audio id="breathingSound">
+            <source src="/coherence-cardiaque-echo.48318679.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
           </audio>
         </div>
       </section>
@@ -96,4 +104,4 @@
   </div>
 
 </body>
-</html>
+</html>""
